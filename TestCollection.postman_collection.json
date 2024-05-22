@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "bdc82d5e-5fe1-4c57-96be-448a8815d9c6",
+		"name": "TestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23050188"
+	},
+	"item": [
+		{
+			"name": "GetTestResource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check Status\",()=>{\r",
+							"    pm.expect(pm.response.code).to.eql(200)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrlTestCollection}}",
+					"host": [
+						"{{BaseUrlTestCollection}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "https://portal.rinn.az"
+		}
+	]
+}
