@@ -16,7 +16,9 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
+      - name: List files for debugging
+        run: ls -la
+
       - name: Run API tests
-        run: |
-          newman run TestCollection.postman_collection.json 
-          -e TestCollectionEnvironment.postman_environment.json
+        run:
+          newman run TestCollection.postman_collection.json -e TestCollectionEnvironment.postman_environment.json
