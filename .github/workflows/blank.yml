@@ -25,3 +25,9 @@ jobs:
       - name: Run API tests
         run: |
           newman run TestCollection.postman_collection.json -e TestCollectionEnvironment.postman_environment.json -r htmlextra, cli
+
+      - name: Upload Newman report
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-report
+          path: newman/newman-report.html
