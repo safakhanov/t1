@@ -15,10 +15,13 @@ jobs:
 
       - name: Install Newman
         run: npm install -g newman
-
+      
+      - name: Install Newman reporter
+        run: npm i newman-reporter-htmlextra
+      
       - name: List files for debugging
         run: ls -la
 
       - name: Run API tests
         run: |
-          newman run TestCollection.postman_collection.json -e TestCollectionEnvironment.postman_environment.json
+          newman run TestCollection.postman_collection.json -e TestCollectionEnvironment.postman_environment.json -r htmlextra, cli
