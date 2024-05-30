@@ -17,5 +17,6 @@ jobs:
         run: npm install -g newman
 
       - name: Run API tests
-        run:
-          newman run TestCollection.postman_collection.json -e TestCollectionEnvironment.postman_environment.json
+        run: |
+          newman run TestCollection.postman_collection.json 
+          -e TestCollectionEnvironment.postman_environment.json
