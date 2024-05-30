@@ -1,4 +1,4 @@
-name: Automated API tests using Postman CLI
+name: Automated API tests using Newman
 
 on: push
 
@@ -7,11 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman
+
       - name: Run API tests
         run: |
-          postman collection run "23050188-bdc82d5e-5fe1-4c57-96be-448a8815d9c6" -e "23050188-d986d08c-82d9-41ff-b6f8-e25f536cb472"
+          newman run TestCollection.postman_collection.json -e TestCollectionEnvironment.postman_environment.json
